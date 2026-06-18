@@ -9,6 +9,7 @@ app = FastAPI(title="我的一个便签工具", description="配合vue前端", v
 
 app.include_router(notes.router, prefix="/notes", tags=["笔记"])
 app.include_router(todos.router,prefix="/todos",tags=["任务"])
+app.include_router(total.router,prefix="/total",tags=["统计"])
 
 
 @app.get("/", tags=["根目录"])
