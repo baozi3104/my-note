@@ -12,6 +12,7 @@ class NoteResponse(BaseModel):
     title: str
     content: str
     created_at: datetime
+    is_deleted: bool
 
     class Config:
         from_attributes = True
@@ -19,6 +20,7 @@ class NoteResponse(BaseModel):
 
 class TodoCreate(BaseModel):
     title: str
+    parent_id: int | None = None
 
 
 class TodoResponse(BaseModel):
@@ -26,6 +28,9 @@ class TodoResponse(BaseModel):
     title: str
     is_completed: bool
     created_at: datetime
+    is_deleted: bool
+    tomato_count: int
+    parent_id: int | None = None
 
     class Config:
         from_attributes = True

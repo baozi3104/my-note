@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from database import Base
 from datetime import datetime
 
@@ -9,6 +9,7 @@ class Note(Base):
     title = Column(String, index=True)
     content = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
+    is_deleted = Column(Boolean, default=False)
 
 
 class Todo(Base):
@@ -17,3 +18,6 @@ class Todo(Base):
     title = Column(String, index=True)
     is_completed = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+    tomato_count = Column(Integer, default=0)
+    parent_id = Column(Integer, ForeignKey("todos.id"), nullable=True)
+    is_deleted = Column(Boolean, default=False)
